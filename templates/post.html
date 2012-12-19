@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block css_links %}
+
+<link href="../resources/static/css/blog.css" rel="stylesheet" media="screen">
+<link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+{% endblock %}
+
+{% block content %}
+    <h2>Blog</h2>
+	{% for post in posts %}
+
+		<div class="post">
+		  <div class="post-heading">
+		    <div class="post-title">
+		      {{post.subject}}
+		      try
+		    </div>
+		
+		    <div class="post-date">
+		      {{post.created.strftime("%b %d, %Y")}}
+		    </div>
+		  </div>
+		
+		  <div class="post-content">
+		    {{post.content | safe}}
+		  </div>
+		</div>
+		<br />
+	{% endfor %}
+{% endblock %}

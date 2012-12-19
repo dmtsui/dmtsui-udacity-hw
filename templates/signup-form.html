@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% from 'macros.html' import error %}
+{% block css_links %}
+
+<link href="../resources/static/css/blog.css" rel="stylesheet" media="screen">
+<link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+{% endblock %}
+
+{% block content %}
+
+    <h2>Signup</h2>
+    <form method="post">
+      <table>
+        <tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input type="text" name="username" value="{{username}}">
+          </td>
+          {% if error_username == True %}
+          	{{ error('That is not a valid username') }}
+          {% endif %}
+	
+        </tr>
+
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+          {% if error_password == True %}
+          	{{ error("That wasn't a valid password") }}
+          {% endif %}
+        </tr>
+
+        <tr>
+          <td class="label">
+            Verify Password
+          </td>
+          <td>
+            <input type="password" name="verify" value="">
+          </td>
+          {% if error_verify == True %}
+          	{{ error("your password didn't match") }}
+          {% endif %}
+        </tr>
+
+        <tr>
+          <td class="label">
+            Email (optional)
+          </td>
+          <td>
+            <input type="text" name="email" value="{{email}}">
+          </td>
+          {% if error_email == True %}
+          	{{ error('That is not a valid email') }}
+          {% endif %}
+        </tr>
+      </table>
+
+      <input type="submit">
+    </form>
+
+{% endblock %}
+
+
